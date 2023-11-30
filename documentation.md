@@ -106,9 +106,3 @@ When a client disconnects (`ws.on("close", ...)`), the server logs the disconnec
 ## Error Handling
 
 Any errors that occur during message processing, file operations, or other tasks are caught, and the Simple File Server sends a failure message back to the client.
-
-## Conclusion
-
-Understanding the packet handling process in the Simple File Server is crucial for both server and client implementations. The server efficiently processes different types of messages, performs file operations, and communicates the outcomes back to the clients.
-
-For more detailed information, refer to the source code comments and documentation.
