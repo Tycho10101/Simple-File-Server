@@ -1,10 +1,10 @@
-# Simple-File-Server
-A simple file server made in node.js
+# Simple File Server
+A simple file server made in node.js.
 
 ### Functions:
-- Send: Uploads files to server
-- Grab: Downloads files from server
-- Dir: See files uploaded by user 
+- Send: Uploads files to server.
+- Grab: Downloads files from server.
+- Dir: See files uploaded by user.
 
 ### Documentation:
-WIP
+You can find the documentation [here](documentation.md).
