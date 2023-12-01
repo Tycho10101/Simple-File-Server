@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Simple File Server in this code facilitates communication between clients and the server using packets. Packets are units of data that contain information exchanged between the server and clients. This document provides an overview of how packets are handled in the Simple File Server.
+The Simple File Server in this code facilitates communication between clients and the server using packets. Packets are units of data that contain information exchanged between the server and clients. This document provides an overview of how packets are handled in the Simple File Server. (Example code is provided [here](ExampleInfo.md))
 
 ## Packet Structure
 
