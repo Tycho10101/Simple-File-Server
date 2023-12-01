@@ -86,7 +86,7 @@ When a client connects to the Simple File Server (`wss.on("connection", ...)`), 
 
      ```json
      {
-       "url": "data:application/zip;base64,UEsDBBQAAAAIAIqDp0hMpwcAAAAQAAAALAAAAbWltZXR5cGUuZGF0Vk1RvgP4VWdbE
+       "url": "data:application/octet-stream;base64,UEsDBBQAAAAIAIqDp0hMpwcAAAAQAAAALAAAAbWltZXR5cGUuZGF0Vk1RvgP4VWdbE
        ... (base64-encoded file content) ..."
      }
      ```
