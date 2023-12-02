@@ -6,7 +6,7 @@ The Simple File Server in this code facilitates communication between clients an
 
 ## Packet Structure
 
-Packets in this Simple File Server can be in the form of JSON-encoded messages. Each message contains a `mode` property that indicates the purpose or type of the message. The server processes different modes, such as "grab," "send," and "dir," to handle various client requests.
+Packets in this Simple File Server are in the form of JSON-encoded messages. Each message contains a `mode` property that indicates the purpose or type of the message. The server processes different modes, such as "grab," "send," "dir," "delete," and "rename," to handle various client requests.
 
 ## Packet Handling Process
 
@@ -30,27 +30,20 @@ When a client connects to the Simple File Server (`wss.on("connection", ...)`), 
      }
      ```
 
-   - **Mode "send" Request with base64-encoded data**:
+     - Retrieves the content of the specified file and sends it back to the client as a base64-encoded URL.
+
+   - **Mode "send" Request**:
 
      ```json
      {
        "mode": "send",
        "user": "username",
        "name": "file.txt",
-       "url": "data:text/plain;base64,SGVsbG8gd29ybGQhCg=="
+       "url": "data:application/octet-stream;base64,SGVsbG8gd29ybGQhCg=="
      }
      ```
 
-   - **Mode "send" Request with a URL**:
-
-     ```json
-     {
-       "mode": "send",
-       "user": "username",
-       "name": "file.txt",
-       "url": "https://example.com/file.txt"
-     }
-     ```
+     - Saves a file on the server based on the client's request, either from a base64-encoded data URL or a remote URL.
 
    - **Mode "dir" Request**:
 
@@ -61,10 +54,34 @@ When a client connects to the Simple File Server (`wss.on("connection", ...)`), 
      }
      ```
 
-3. **File Operations**:
-   - The server performs file read and write operations based on the client's request.
+     - Retrieves the list of files in the specified user directory on the server and sends it back to the client.
 
-4. **Sending Responses**:
+   - **Mode "delete" Request**:
+
+     ```json
+     {
+       "mode": "delete",
+       "user": "username",
+       "name": "file.txt"
+     }
+     ```
+
+     - Deletes the specified file and removes the associated directory if empty.
+
+   - **Mode "rename" Request**:
+
+     ```json
+     {
+       "mode": "rename",
+       "user": "username",
+       "name1": "old_file.txt",
+       "name2": "new_file.txt"
+     }
+     ```
+
+     - Renames the specified file.
+
+3. **Sending Responses**:
 
    - **Successful file operation response**:
 
@@ -96,6 +113,22 @@ When a client connects to the Simple File Server (`wss.on("connection", ...)`), 
      ```json
      {
        "files": ["file1.txt", "file2.jpg", "file3.pdf"]
+     }
+     ```
+
+   - **Mode "delete" Response**:
+
+     ```json
+     {
+       "message": "File deleted successfully"
+     }
+     ```
+
+   - **Mode "rename" Response**:
+
+     ```json
+     {
+       "message": "File renamed successfully"
      }
      ```
 
